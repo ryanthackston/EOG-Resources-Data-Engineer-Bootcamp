@@ -1,0 +1,75 @@
+# Save an Employee (Insert or Update) with JSON format
+curl -X POST "http://127.0.0.1:8000/save_employees_json" \
+-H "Content-Type: application/json" \
+-d '{
+  "employee_id": 143,
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "email": "jane.doe@example.com",
+  "phone": "515-123-5555",
+  "hire_date": "2018-05-22T00:00:00",
+  "manager_id": 3,
+  "job_title": "Sales Representative",
+  "is_active_fl": 1
+}'
+
+# Save an Employee (Insert or Update) without JSON (using regular fields)
+curl -X POST "http://127.0.0.1:8000/save_employees" \
+-H "Content-Type: application/json" \
+-d '{
+  "employee_id": 142,
+  "first_name": "Annabelle",
+  "last_name": "Dunn",
+  "email": "annabelle.dunn@example.com",
+  "phone": "515-123-4444",
+  "hire_date": "2016-09-17T00:00:00",
+  "manager_id": 2,
+  "job_title": "Administration Assistant",
+  "is_active_fl": 1
+}'
+
+# Get an Employee by ID in JSON format
+curl -X GET "http://127.0.0.1:8000/employees/json/142"
+
+# Get all Employees under a specific Manager
+curl -X GET "http://127.0.0.1:8000/get_employees/1"
+
+# Delete an Employee by ID (Logical Delete)
+curl -X DELETE "http://127.0.0.1:8000/employees/143"
+
+# Get an Employee by ID
+curl -X GET "http://127.0.0.1:8000/get_employee/143"
+
+# Get all Employees in JSON format under a specific Manager
+curl -X GET "http://127.0.0.1:8000/employees/json_clob_manager/3"
+
+# Save multiple Employees (Insert or Update) in JSON format
+curl -X POST "http://127.0.0.1:8000/save_employees_json" \
+-H "Content-Type: application/json" \
+-d '[
+  {
+    "employee_id": 144,
+    "first_name": "Emily",
+    "last_name": "Smith",
+    "email": "emily.smith@example.com",
+    "phone": "515-123-6666",
+    "hire_date": "2017-11-15T00:00:00",
+    "manager_id": 3,
+    "job_title": "Developer",
+    "is_active_fl": 1
+  },
+  {
+    "employee_id": 145,
+    "first_name": "John",
+    "last_name": "Brown",
+    "email": "john.brown@example.com",
+    "phone": "515-123-7777",
+    "hire_date": "2019-02-25T00:00:00",
+    "manager_id": 4,
+    "job_title": "Designer",
+    "is_active_fl": 1
+  }
+]'
+
+# Get Employee details in JSON CLOB format by ID
+curl -X GET "http://127.0.0.1:8000/employees/json_clob/144"
